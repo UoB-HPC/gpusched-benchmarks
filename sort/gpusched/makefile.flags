@@ -1,0 +1,6 @@
+ARCH=sm_60
+
+CC=nvcc
+CFLAGS=-O3 -std=c++11 -x cu -Xcompiler -fopenmp -DNWORKERS=1 -arch=$(ARCH)
+LIBS=-Xcompiler -fopenmp
+

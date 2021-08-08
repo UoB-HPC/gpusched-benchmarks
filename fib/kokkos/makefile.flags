@@ -1,0 +1,19 @@
+include $(KOKKOS_PATH)/Makefile.kokkos
+
+CC_GNU=g++
+CC_INTEL=icpc
+CC_CLANG=clang++
+CC_ARM=armclang++
+CC_CRAY=CC
+CC_NVCC=nvcc_wrapper
+CC=$(CC_$(COMPILER))
+
+CFLAGS_CLANG=-Ofast $(ARCH_CFLAGS) -fopenmp
+CFLAGS_GNU=-Ofast -fno-cx-limited-range $(ARCH_CFLAGS) -fopenmp
+CFLAGS_INTEL=-Ofast -x$(ARCH_CFLAGS) -qopenmp
+CFLAGS_ARM=-Ofast $(ARCH_CFLAGS) -fopenmp
+CFLAGS_CRAY=-fopenmp
+CFLAGS_NVCC=-O3 -Xcompiler -fopenmp
+CFLAGS=$(KOKKOS_CPPFLAGS) $(KOKKOS_CXXFLAGS) $(CFLAGS_$(COMPILER)) 
+
+LIBS=$(KOKKOS_LDFLAGS) $(KOKKOS_LIBS)

@@ -1,0 +1,15 @@
+COMPILER=CLANG
+ARCH=native
+
+CC_CLANG=clang++
+CC_GNU=g++
+CC=$(CC_$(COMPILER))
+
+CFLAGS_CLANG=-O3 -fopenmp -std=c++11 -march=$(ARCH)
+CFLAGS_GNU=-O3 -fopenmp -std=c++11 -march=$(ARCH)
+CFLAGS=$(CFLAGS_$(COMPILER))
+
+LIBS_CLANG=-fopenmp
+LIBS_GNU=-fopenmp
+LIBS=$(LIBS_$(COMPILER))
+
